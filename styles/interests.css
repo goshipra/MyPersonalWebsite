@@ -1,0 +1,195 @@
+/* Gallery Bar Styling on Extra.html*/
+
+.interesting {
+  /* background-color: aliceblue; */
+  background:radial-gradient(circle, rgb(222, 221, 248) 26%, rgb(247, 225, 207) 53%, rgb(221, 248, 250) 85%);
+margin-top: 40px;
+}
+
+.overlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-family: cursive;
+  font-size: 70px;
+  color: #818181;
+  display: block;
+  /* transition: 2s; */
+}
+
+.overlay a:hover,
+.overlay a:focus {
+  color: #f1f1f1;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+.menutab span {
+  font-size: 70px;
+  font-family: "Times New Roman", Times, serif;
+  color: #818181;
+  text-align: center;
+  /* margin-left: 35%; */
+}
+
+.menutab span:hover {
+  font-size: 80px;
+}
+
+/* Gallery Bar Styling on Extra.html ENDS*/
+
+/* Articles Section Styling */
+.hobbies {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 30px;
+  color: #818181;
+  font-weight: bold;
+  text-align: justify;
+  margin: 20px;
+  border: 1px black;
+  max-width: 100%;
+  height:700px;
+  background-color: aliceblue;
+  border-radius: 10px;
+  overflow: scroll;
+}
+
+.hobbies video {
+  float: right;
+  padding: 20px;
+  margin: 20px;
+  
+  
+}
+.hobbies p::first-letter{
+
+  font-size: 80px;
+  color: rgb(78, 76, 76);
+}
+
+/* Articles Section Styling ENDS */
+
+/* Video Section Styling */
+
+.myinterest video {
+  float: left;
+  margin-top: 20px;
+  
+ 
+}
+
+/* Mobile */
+
+@media screen and (max-height: 450px) {
+  .overlay a {
+    font-size: 20px;
+  }
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+
+  .myinterest video {
+    margin: 30px;
+    
+   
+   
+  
+  }
+}
+
+/* Tablet */
+@media screen and (min-width: 768px) {
+  .menutab span {
+    margin-left: 40%;
+  }
+
+
+
+  .hobbies {
+    max-width: 100%;
+    width: 768px;
+    height: 700px;
+    margin-left: 100px;
+
+    overflow: scroll;
+  }
+
+  .myinterest {
+    margin-left: 20px;
+    margin-top: 40px;
+  }
+
+  .myinterest video {
+    margin: 20px;
+  
+ 
+   
+    
+  }
+}
+
+/* Desktop */
+
+@media screen and (min-width: 1024px) {
+  .hobbies {
+    width: 1024px;
+    height: 700px;
+    float: left;
+    overflow: scroll;
+    padding: 20px;
+    margin-left: 30px;
+  }
+  .myinterest video {
+    margin: 30px;
+ 
+   
+  
+  }
+
+}
+
+
+
+/* Desktop */
+
+@media screen and (min-width: 1300px) {
+
+  .hobbies{
+    width: 1000px;
+  }
+
+
+  .myinterest video {
+    margin: 30px;
+    
+   
+  
+  }
+}
