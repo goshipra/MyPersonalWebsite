@@ -2,8 +2,8 @@
 
 Hi, Welcome!
 
-This is the personal website template Project.I have created this simple project from scratch. I used HTML, CSS and JavaScript in this project.
-This project can run on mobile, Tablet and Laptop perfectly well. I used media-screen property from CSS.
+This is the personal website template Project.I created this simple project from scratch in which HTML, CSS and JavaScript is used.
+This project can run on mobile, Tablet and Laptop perfectly according toscreen width for that media-screen property from CSS has been used.
 
 # Project setup
 
