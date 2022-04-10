@@ -10,15 +10,19 @@ This project can run on mobile, Tablet and Laptop perfectly according toscreen w
 If you do need to set the project up locally yourself, feel free to follow these instructions:
 
 # System Requirements
+```
 An Operating System
 A Web Browser
+```
 
-# Setup steps
-First, fork the repo, then do this:
-git clone <your-fork>
+# Quickstart
+```
+git clone git@github.com:goshipra/MyPersonalWebsite.git
 cd MyPersonalWebsite
+```
 
 # Executing Project  
+```
 To run from CLI:
 open index.html
   
@@ -26,7 +30,8 @@ To run from IDE:
 open index.html file and run it OR
 Right click and select open in Live Server on index.html file
   
-Done!  Enjoy!
+Done!
+```
   
 # Styles 
 CSS stylesheets
