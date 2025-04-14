@@ -16,7 +16,11 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                git 'https://github.com/goshipra/MyPersonalWebsite.git'
+                git(
+                    url: 'https://github.com/goshipra/MyPersonalWebsite.git',
+                    branch: 'main',
+                    credentialsId: 'github-credentials1'
+                )
             }
         }
 
