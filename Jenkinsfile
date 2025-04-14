@@ -24,6 +24,14 @@ pipeline {
             }
         }
 
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    dockerImage = docker.build("${ECR_REPO}:${IMAGE_TAG}")
+                }
+            }
+        }
+
         stage('Test1') {
             steps {
                 echo 'Pipeline started and ran successfully.'
