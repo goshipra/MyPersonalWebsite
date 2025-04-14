@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: html-site
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: html-site
+  template:
+    metadata:
+      labels:
+        app: html-site
+    spec:
+      containers:
+      - name: html-site
+        image: 183295408293.dkr.ecr.us-east-1.amazonaws.com/html-website-shipra/html-site-repo:latest
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: html-service
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 80
+  selector:
+    app: html-site
+
