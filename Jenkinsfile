@@ -32,6 +32,18 @@ pipeline {
             }
         }
 
+        stage('Push to ECR') {
+            steps {
+                script {
+                    sh '''
+                        aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin 183295408293.dkr.ecr.us-east-1.amazonaws.com/html-website-shipra
+                        docker tag ${ECR_REPO}:${IMAGE_TAG} 183295408293.dkr.ecr.us-east-1.amazonaws.com/html-website-shipra/${ECR_REPO}:${IMAGE_TAG}
+                        docker push 183295408293.dkr.ecr.us-east-1.amazonaws.com/html-website-shipra/${ECR_REPO}:${IMAGE_TAG}
+                    '''
+                }
+            }
+        }
+
         stage('Test1') {
             steps {
                 echo 'Pipeline started and ran successfully.'
