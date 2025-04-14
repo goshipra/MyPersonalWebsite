@@ -5,6 +5,9 @@ pipeline {
         AWS_REGION = 'us-east-1'
         ECR_REPO = 'html-website-shipra'
         IMAGE_TAG = "${BUILD_NUMBER}"
+        AWS_ACCESS_KEY_ID = credentials('aws-creds')
+        AWS_SECRET_ACCESS_KEY = credentials('aws-creds')
+        AWS_DEFAULT_REGION = "us-east-1"
     }
 
     stages {
