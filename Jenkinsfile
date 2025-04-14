@@ -14,6 +14,12 @@ pipeline {
             }
         }
 
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/goshipra/MyPersonalWebsite.git'
+            }
+        }
+
         stage('Test1') {
             steps {
                 echo 'Pipeline started and ran successfully.'
