@@ -67,10 +67,16 @@ pipeline {
         stage('Deploy to EKS') {
             steps {
                 sh '''
-                    kubectl set image deployment/html-site html-site=183295408293.dkr.ecr.us-east-1.amazonaws.com/html-website-shipra/${ECR_REPO}:${IMAGE_TAG} --record
+                echo "⚙️ Updating kubeconfig for EKS..."
+                aws eks update-kubeconfig --region $AWS_DEFAULT_REGION --name html-cluster
+
+                echo "🔧 Running kubectl set image..."
+                kubectl set image deployment/html-site \
+                    html-site=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPO:$IMAGE_TAG \
+                    --record
                 '''
             }
-        }
+}
 
 
         stage('Test1') {
