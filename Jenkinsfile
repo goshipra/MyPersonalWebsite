@@ -35,6 +35,16 @@ pipeline {
             }
         }
 
+        stage('Debug AWS Creds') {
+            steps {
+                sh '''
+                echo "Access Key: $AWS_ACCESS_KEY_ID"
+                echo "Secret Key: ${AWS_SECRET_ACCESS_KEY:0:4}****"
+                aws sts get-caller-identity
+                '''
+            }
+            }
+
         stage('Push to ECR') {
             environment {
                 ECR_REPO  = 'html-website-shipra'
