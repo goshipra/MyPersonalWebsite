@@ -39,7 +39,7 @@ pipeline {
             steps {
                 sh '''
                 echo "Access Key: $AWS_ACCESS_KEY_ID"
-                echo "Secret Key: ${AWS_SECRET_ACCESS_KEY:0:4}****"
+                echo "Secret Key: $(echo $AWS_SECRET_ACCESS_KEY | cut -c1-4)****"
                 aws sts get-caller-identity
                 '''
             }
