@@ -47,24 +47,30 @@ pipeline {
             }
             }
 
-            stage('Push to ECR') {
-                    steps {
-                        script {
-                        sh '''
-                            echo "🔐 Logging in to ECR..."
-                            aws ecr get-login-password --region $AWS_DEFAULT_REGION | \
-                            docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+        stage('Push to ECR') {
+                steps {
+                    script {
+                    sh '''
+                        echo "🔐 Logging in to ECR..."
+                        aws ecr get-login-password --region $AWS_DEFAULT_REGION | \
+                        docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
 
-                            echo "🏷️ Tagging Docker image..."
-                            docker tag $ECR_REPO:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPO:$IMAGE_TAG
+                        echo "🏷️ Tagging Docker image..."
+                        docker tag $ECR_REPO:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPO:$IMAGE_TAG
 
-                            echo "📤 Pushing Docker image to ECR..."
-                            docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPO:$IMAGE_TAG
-                        '''
-                        }
+                        echo "📤 Pushing Docker image to ECR..."
+                        docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPO:$IMAGE_TAG
+                    '''
                     }
-                    }
-
+                }
+                }
+        stage('Deploy to EKS') {
+            steps {
+                sh '''
+                    kubectl set image deployment/html-site html-site=183295408293.dkr.ecr.us-east-1.amazonaws.com/html-website-shipra/${ECR_REPO}:${IMAGE_TAG} --record
+                '''
+            }
+        }
 
 
         stage('Test1') {
